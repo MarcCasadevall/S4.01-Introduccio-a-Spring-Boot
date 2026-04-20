@@ -1,0 +1,10 @@
+# Configuración de IntelliJ
+.idea/
+*.iml
+
+# Carpetas de Postman
+.postman/
+postman/
+
+# Por si acaso, ignorar carpetas target en cualquier nivel
+**/target/
