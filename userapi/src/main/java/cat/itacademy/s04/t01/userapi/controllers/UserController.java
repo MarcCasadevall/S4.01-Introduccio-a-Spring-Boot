@@ -17,7 +17,6 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers(@RequestParam(required = false) String name) {
-
         if (name == null || name.isEmpty()) {
             return users;
         }
