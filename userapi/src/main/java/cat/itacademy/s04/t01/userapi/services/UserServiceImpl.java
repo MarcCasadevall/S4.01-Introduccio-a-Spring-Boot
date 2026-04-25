@@ -1,5 +1,6 @@
 package cat.itacademy.s04.t01.userapi.services;
 
+import cat.itacademy.s04.t01.userapi.exceptions.EmailAlreadyExistsException;
 import cat.itacademy.s04.t01.userapi.models.User;
 import cat.itacademy.s04.t01.userapi.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new EmailAlreadyExistsException("Email already exists: " + user.getEmail());
+        }
         user.setId(UUID.randomUUID());
         return userRepository.save(user);
     }
